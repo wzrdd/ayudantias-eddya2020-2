@@ -24,9 +24,9 @@ public class Fibonacci{
         if(n == 0) return 0;
 
         int current = 1;
-        int prev = 1;
+        int prev = 0;
 
-        for(int i = 2; i < n; i++){
+        for(int i = 1; i < n; i++){
             int temp = current;
             current += prev;
             prev = temp;
