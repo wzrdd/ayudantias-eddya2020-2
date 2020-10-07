@@ -10,8 +10,6 @@ public class MergeList {
   }
 
   static class LinkedList{
-
-
     public static Node head = null;
 
     public void insert(int v){
