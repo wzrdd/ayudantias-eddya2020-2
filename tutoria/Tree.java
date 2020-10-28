@@ -19,8 +19,19 @@ public class Tree {
 			root = r;
 		}
 
+		public void insertLevelOrder(ArrayList<Integer> arr, Node node, int i) {
+			if (i < arr.size()) {
+				Node temp = new Node(arr.get(i));
+				node = temp;
+				node.left = insertLevelOrder(arr, node.left, 2 * i + 1);
+				node.right = insertLevelOrder(arr, node.right, 2 * i + 2);
+			}
+
+			root = node;
+		}
+
 		// imprime en inorder
-		public void print(){
+		public void print() {
 			print(root);
 		}
 
@@ -28,7 +39,8 @@ public class Tree {
 		// inorder [left, root, right]
 		// postorder [left, right, root]
 		private void print(Node node) {
-			if (node == null) return;
+			if (node == null)
+				return;
 
 			System.out.print(node.value + " ");
 			print(node.left);
@@ -37,7 +49,7 @@ public class Tree {
 
 		// https://www.geeksforgeeks.org/write-a-c-program-to-find-the-maximum-depth-or-height-of-a-tree/
 		// Max Height
-		public int getHeight(){
+		public int getHeight() {
 			return getHeight(root);
 		}
 
@@ -52,13 +64,14 @@ public class Tree {
 			}
 		}
 
-		public boolean search(int key){
+		public boolean search(int key) {
 			return search(root, key);
 		}
 
-		private boolean search(Node node, int key){
-			if(node == null) return false;
-			if(node.value == key){
+		private boolean search(Node node, int key) {
+			if (node == null)
+				return false;
+			if (node.value == key) {
 				return true;
 			}
 
@@ -79,6 +92,6 @@ public class Tree {
 
 		BT tree = new BT(root);
 
-		tree.printPreorder();
+		tree.print();
 	}
 }
